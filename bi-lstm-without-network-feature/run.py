@@ -66,6 +66,13 @@ def embedding(lst):
     emb.append(temp[:70])
   return torch.FloatTensor(emb)
 
+#checking if cuda is avilable
+if torch.cuda.is_available():  
+  dev = "cuda:0" 
+else:  
+  dev = "cpu"  
+device = torch.device(dev) 
+
 head_vec = embedding(new_head).to(device)
 body_vec = embedding(new_body).to(device)
 label_vec = torch.LongTensor(new_label).to(device)
