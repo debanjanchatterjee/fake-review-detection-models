@@ -103,3 +103,19 @@ def load_new(reload):
     df0 = pd.read_csv(path+"dataset.csv")
 
   return df0
+
+def tokenizer(text):
+  '''Removes stop words, symbols and tokenize''' 
+  lst = []
+  for i in word_tokenize(text):
+    # remove symbols
+    i = re.sub(r'[^\w]', '', i)
+    # remove numbers
+    i = re.sub(r'[0-9]+', '', i)
+    # convert to lower case
+    i = i.lower()
+    if i not in stopword and len(i) > 1:
+      lst.append(i)
+  #str1 = ' '
+  #return str1.join(lst)
+  return lst
