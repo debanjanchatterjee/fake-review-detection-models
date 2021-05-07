@@ -38,6 +38,7 @@ path = ''
 
 head,body,label,features = load_train(reload = True,path = path)
 
+#sample 75k point from dataset
 new_head = []
 new_body = []
 new_features = []
@@ -49,7 +50,7 @@ for i in label:
     positive +=1
   else:
     negitive +=1
-till = 50000 - negitive
+till = 75000 - negitive
 count = 0 
 for i in range(len(body)):
   if label[i]:
