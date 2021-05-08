@@ -9,8 +9,9 @@ import math
 
 
 def partition(df):
-  ratio = 0.10
+  ratio = 3000/len(df.loc[df['Label'] == 0])
   df_test0 = df.loc[df['Label'] == 0].sample(frac = ratio)
+  ratio = 3000/len(df.loc[df['Label'] == 1])
   df_test1 = df.loc[df['Label'] == 1].sample(frac = ratio)
   df_test = df_test1.append(df_test0)
   df_train = df.drop(df_test.index)
